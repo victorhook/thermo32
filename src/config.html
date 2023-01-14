@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>THERMO32 Configuration</title>
+</head>
+<body>
+
+    <style>
+        body {
+            text-align: center;
+            background-color: black;
+            color: white;
+        }
+
+        table {
+            margin: auto;
+            padding: 1em;
+            text-align: left;
+        }
+
+        input {
+            padding: 0.3em;
+            margin: 0.3em 1.5em;
+        }
+
+        input[type=text], input[type=number] {
+            background-color: black;
+            color: white;
+        }
+
+        input[type=submit] {
+            margin-bottom: 1em;
+            background-color: black;
+            color: white;
+            font-size: 1.3em;
+            padding: 0.4em;
+            border: 1px solid white;
+            border-radius: 10px;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        input[type=submit]:hover {
+            cursor: pointer;
+            background-color: gray;
+        }
+
+
+    </style>
+
+    <div>
+        <h1>THERMO32 Configuration</h1>
+        <hr>
+    </div>
+
+    <iframe name="dummyframe" id="dummyframe" style="display: none;"></iframe>
+
+    <form method="POST" action="/config" target="dummyframe">
+        <table>
+            <tr>
+                <td>WiFi SSID</td>
+                <td><input type="text" name="ssid"></td>
+            </tr>
+            <tr>
+                <td>WiFi Password</td>
+                <td><input type="text" name="password"></td>
+            </tr>
+            <tr>
+                <td>WiFi connect timeout (seconds)</td>
+                <td><input type="number" name="wifi_timeout" value=30></td>
+            </tr>
+            <tr>
+                <td>Device ID</td>
+                <td><input type="text" name="device_id" value="batman"></td>
+            </tr>
+            <tr>
+                <td>MQTT Broker IP</td>
+                <td><input type="text" name="mqtt_broker_ip" placeholder="Eg. 192.168.0.10"></td>
+            </tr>
+            <tr>
+                <td>MQTT Broker Port</td>
+                <td><input type="text" name="mqtt_broker_port" value="1883"></td>
+            </tr>
+            <tr>
+                <td>MQTT Topic</td>
+                <td><input type="text" name="mqtt_topic" value="temperature/"></td>
+            </tr>
+            <tr>
+                <td>Minutes between publish</td>
+                <td><input type="number" name="min_between_pub" value=10></td>
+            </tr>
+        </table>
+
+        <input type="submit" value="Set configuration">
+
+    </form>
+
+    <form method="POST" action="/restart" target="dummyframe">
+        <input type="submit" value="Restart Device">
+    </form>
+
+    </body>
+</html>
